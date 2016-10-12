@@ -18,4 +18,4 @@ def signup(request,urlhash):
 	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
 	e.attending.add(user)
 	#print str(ser)
-	return JsonResponse({"results":ser},safe=False)
+	return JsonResponse({"results":str(ser)},safe=False)

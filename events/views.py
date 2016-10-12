@@ -7,7 +7,9 @@ from .models import Event
 from register import views
 app_name='events'
 def home(request):
-	return HttpResponse("<center><h1>You successfully landed on the events page</h1></center>")
+	evnts=Event.objects.all()
+
+	return render(request,'events.html',{'querydict':evnts})
 
 def signup(request,urlhash):
 	e=Event.objects.get(id=urlhash)
@@ -25,3 +27,8 @@ def view_attendees(request,urlhash):
 	#print json
 	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
 	return HttpResponse(str({"results":str(ser)}))
+
+def view_QR(request,urlhash):
+	evnt=str(Event.objects.get(id=urlhash))
+	string="http://grape-webapp.azurewebsites.net/events/"+urlhash+"/"
+	return render(request,'QR.html',{'URL':string,'Event':evnt})

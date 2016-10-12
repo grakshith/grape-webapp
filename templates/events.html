@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h4>Events</h4>
+            <ul>
+            {% for keys in querydict %}
+            <li> <a href="/events/{{keys.id}}/QR">{{keys}}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

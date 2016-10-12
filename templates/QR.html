@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+        <center>
+            <h4>{{Event}}</h4>
+            <p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data={{URL}}" alt="QR code for {{Event}}">
+            </p>
+            <p><a href="/"> Go Back </a></p>
+            </center>
+        </div>
+    </div>
+</div>
+{% endblock %}

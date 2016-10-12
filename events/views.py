@@ -24,4 +24,4 @@ def view_attendees(request,urlhash):
 	json=e.attending.all()
 	#print json
 	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
-	return HttpResponse({"results":str(ser)},safe=False)
+	return HttpResponse({"results":str(ser)})

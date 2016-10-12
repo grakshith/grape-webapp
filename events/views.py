@@ -11,11 +11,17 @@ def home(request):
 
 def signup(request,urlhash):
 	e=Event.objects.get(id=urlhash)
-
 	user=views.signup(request)
+	#json=e.attending.all()
+	#print json
+	#ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
+	e.attending.add(user)
+	#print str(ser)
+	return JsonResponse({"results":"Success"},safe=False)
+	
+def view_attendees(request,urlhash):
+	e=Event.objects.get(id=urlhash)
 	json=e.attending.all()
 	#print json
 	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
-	e.attending.add(user)
-	#print str(ser)
 	return JsonResponse({"results":str(ser)},safe=False)

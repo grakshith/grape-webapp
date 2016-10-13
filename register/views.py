@@ -11,14 +11,14 @@ def signup(request):
 	if 'name' and 'email' in request.GET:
 		form=PersonForm(request.GET)
 		if form.is_valid():
-			form.save()
+			user=form.save()
 		else:
 
 			li=[]
 			for items in request.GET:
 				li.append(request.GET[items])
 			return HttpResponse("<center><h1> Form not validated </h1></center>\n"+str(li)+str(form))
-		q=Person.objects.get(email=request.GET['email'])
-		return q
+		
+		return user
 	else:
 		return redirect('/register')

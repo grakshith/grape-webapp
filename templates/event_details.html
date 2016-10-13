@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h2>{{Event}}</h2>
+            <p>
+            Event name : {{Event.name}}</p>
+            <p>
+            Date & time : {{Event.date}} <small>(Your local time)</small>
+            </p>
+            <p> Total count : {{Count}}
+            </p>
+            <h3>Attendees</h3>
+            <ul>
+            {% for person in Attending %}
+            <li><a href="/admin/register/person/{{person.identity}}/change/">{{person}}</a></li>
+            {% endfor %}
+            </ul>
+            <p><a href="QR">Go Back</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

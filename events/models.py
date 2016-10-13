@@ -5,7 +5,7 @@ from register.models import Person
 # Create your models here.
 class Event(models.Model):
 	def __str__(self):
-		return self.name+" "+str(self.id)
+		return self.name+" on "+str(self.date)
 	name=models.CharField(max_length=50)
 	date=models.DateTimeField()
 	attending=models.ManyToManyField(Person)

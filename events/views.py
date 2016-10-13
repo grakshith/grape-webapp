@@ -31,4 +31,10 @@ def view_attendees(request,urlhash):
 def view_QR(request,urlhash):
 	evnt=str(Event.objects.get(id=urlhash))
 	string="http://grape-webapp.azurewebsites.net/events/"+urlhash+"/"
-	return render(request,'QR.html',{'URL':string,'Event':evnt})
+	return render(request,'QR.html',{'URL':string,'Event':evnt,'urlhash':urlhash})
+	
+def view_details(request,urlhash):
+	e=Event.objects.get(id=urlhash)
+	json=e.attending.all()
+	count=len(json)
+	return render(request,'event_details.html',{'Count':count,'Event':e,'Attending':json})

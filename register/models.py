@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Person(models.Model):
 	def __str__(self):
-		return self.name+"  "+str(self.identity)
+		return self.name
 	name=models.CharField(max_length=100)
 	email=models.EmailField(max_length=50)
 	roll_no=models.CharField(max_length=50)

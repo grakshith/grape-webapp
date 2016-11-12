@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import uuid
+import attendance.settings
 from django.db import models
 from register.models import Person
 # Create your models here.

@@ -4,12 +4,25 @@ from django.core import serializers
 from django.http import HttpResponse,JsonResponse
 #from .forms import PersonForm
 from .models import Event
+from .forms import EventForm
 from register import views
 app_name='events'
 def home(request):
 	evnts=Event.objects.all()
 
 	return render(request,'events.html',{'querydict':evnts})
+
+def register(request):
+	if request.method =='GET':
+		form=EventForm()
+		return render(request,'event_reg.html',{'form':form})
+	elif request.method == 'POST':
+		form=EventForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+		else:
+			return render(request,'event_reg.html',{'form':form})
 
 def signup(request,urlhash):
 	e=Event.objects.get(id=urlhash)

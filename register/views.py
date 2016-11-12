@@ -20,5 +20,12 @@ def signup(request):
 			return HttpResponse("<center><h1> Form not validated </h1></center>\n"+str(li)+str(form))
 		
 		return user
+	elif request.method== 'POST' :
+		form=PersonForm(request.POST)
+		if form.is_valid():
+			user=form.save()
+		else:
+			return render(request,'person_reg.html',{'form':form})	
 	else:
-		return redirect('/register')
+		form=PersonForm()
+		return render(request,'person_reg.html',{'form':form})

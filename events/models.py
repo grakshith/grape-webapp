@@ -10,3 +10,4 @@ class Event(models.Model):
 	date=models.DateTimeField()
 	attending=models.ManyToManyField(Person)
 	id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+	image=models.ImageField(upload_to='events',default="/media/default.png")

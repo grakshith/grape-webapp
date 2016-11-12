@@ -11,6 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = (
     'localhost',
+    u'grape-webapp.azurewebsites.net',
 )
 
 ADMINS = (

@@ -17,7 +17,7 @@ def register(request):
 		form=EventForm()
 		return render(request,'event_reg.html',{'form':form})
 	elif request.method == 'POST':
-		form=EventForm(request.POST)
+		form=EventForm(request.POST, request.FILES)
 		if form.is_valid():
 			form.save()
 			return redirect('/')

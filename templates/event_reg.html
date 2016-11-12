@@ -9,7 +9,7 @@
             {% csrf_token %}
                 <p class="bs-component">
                     <div class="form-group">
-                      <label for="usr">{{ form.name.label_tag }}</label>
+                      <label class="required" for="id_name">{{ form.name.label_tag }}</label>
                       {{ form.name }}
                         {% if form.errors %}
                             {% for error in form.name.errors %}
@@ -22,8 +22,9 @@
                         {% endif %}
                     </div>
                     <div class="form-group">
-                      <label for="id_date">{{ form.date.label_tag }}</label>
+                      <label class="required" for="id_date_0">{{ form.date.label_tag }}</label>
                       {{ form.date }}
+                      {{ form.time }}
                         {% if form.errors %}
                             {% for error in form.date.errors %}
                                 <td>
@@ -35,7 +36,7 @@
                         {% endif %}
                     </div>
                         <div class="form-group">
-                      <label for="id_attending">{{ form.attending.label_tag }}</label>
+                      <label class="required" for="id_attending">{{ form.attending.label_tag }}</label>
                       {{ form.attending }}
                         {% if form.errors %}
                             {% for error in form.attending.errors %}
@@ -47,11 +48,22 @@
                             {% endfor %}
                         {% endif %}
                     </div>
+                    <div class="form-group">
+                      <label class="required" for="id_image">{{ form.image.label_tag }}</label>
+                      {{ form.image }}
+                        {% if form.errors %}
+                            {% for error in form.image.errors %}
+                                <td>
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </p>
                 <p class="bs-component">
-                    <center>
                         <input class="btn btn-success btn-sm" type="submit" value="Submit" />
-                    </center>
                 </p>
             </form>
         </div>

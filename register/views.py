@@ -21,9 +21,10 @@ def signup(request):
 		
 		return user
 	elif request.method== 'POST' :
-		form=PersonForm(request.POST)
+		form=PersonForm(request.POST,request.FILES)
 		if form.is_valid():
 			user=form.save()
+			return HttpResponse("successfully registered")
 		else:
 			return render(request,'person_reg.html',{'form':form})	
 	else:

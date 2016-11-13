@@ -40,7 +40,7 @@ def view_attendees(request,urlhash):
 	e=Event.objects.get(id=urlhash)
 	json=e.attending.all()
 	#print json
-	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email','image'))
+	ser=serializers.serialize('json',json,fields=('name','profession', 'college', 'email'))
 	return HttpResponse(str({"results":str(ser)}))
 
 def view_QR(request,urlhash):

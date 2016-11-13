@@ -7,6 +7,6 @@ class EventForm(forms.ModelForm):
         fields=['name','date','attending','image']
         widgets = {
             'date': wdgt.AdminSplitDateTime()
+        
         }
-        
-        
+    	

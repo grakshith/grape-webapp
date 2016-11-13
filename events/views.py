@@ -6,6 +6,7 @@ from django.http import HttpResponse,JsonResponse
 from .models import Event
 from .forms import EventForm
 from register import views
+from django.views.decorators.csrf import csrf_exempt
 app_name='events'
 def home(request):
 	evnts=Event.objects.all()
@@ -24,6 +25,7 @@ def register(request):
 		else:
 			return render(request,'event_reg.html',{'form':form})
 
+@csrf_exempt
 def signup(request,urlhash):
 	e=Event.objects.get(id=urlhash)
 	user=views.signup(request)
